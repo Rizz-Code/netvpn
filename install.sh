@@ -244,6 +244,7 @@ else
     exit 1
 fi
 
+clear
 echo -e "════════════════════════════════════════" | lolcat
 echo -e "            [Rizz-Code]" | lolcat
 echo -e "════════════════════════════════════════" | lolcat
@@ -385,13 +386,28 @@ ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 clear
 
 echo -e "Create Swap File 2G"
-dd if=/dev/zero of=/swapfile bs=2048 count=1048576
-mkswap /swapfile
-chown root:root /swapfile
-chmod 0600 /swapfile >/dev/null 2>&1
-swapon /swapfile >/dev/null 2>&1
-sed -i '$ i\/swapfile      swap swap   defaults    0 0' /etc/fstab
-echo "DONE"
+# Cek apakah file swap sudah ada
+if [ ! -f /swapfile ]; then
+    # Jika tidak ada, buat file swap sebesar 2GB
+    fallocate -l 2G /swapfile
+
+    # Set izin akses hanya untuk root
+    chmod 600 /swapfile
+
+    # Format file swap
+    mkswap /swapfile
+
+    # Aktifkan swap
+    swapon /swapfile
+
+    # Tambahkan entri ke /etc/fstab untuk membuat swap permanen saat boot
+    echo '/swapfile none swap sw 0 0' >> /etc/fstab
+    echo "Swap Memory yang aktif"
+else
+    echo "File swap (/swapfile) sudah ada."
+fi
+
+
 sleep 3
 clear
 cat> /root/.profile << END
