@@ -258,12 +258,12 @@ echo -e " ${COLOR1}  └──────────────────�
 datediff "$Exp" "$DATE"
 echo -e "${COLOR1}               ┌─────────────────────────────┐  ${NC}" | lolcat
 echo -e "${COLOR1}                      • SCRIPT Detail •          ${NC}" | lolcat
-echo -e "${COLOR1}                • Owner      : RobinHood         ${NC}" | lolcat
-echo -e "${COLOR1}                • Reseller   : $reseller         ${NC}" | lolcat
-echo -e "${COLOR1}                • Client     : $Name             ${NC}" | lolcat
-echo -e "${COLOR1}                • Version    : ${version}        ${NC}" | lolcat
-echo -e "${COLOR1}                • Up-to-Date : ${cekupdate}      ${NC}" | lolcat
-echo -e "${COLOR1}                • Expiry     : ${Expiry} days left    ${NC}" | lolcat
+echo -e "${COLOR1}                • Owner       : RobinHood         ${NC}" | lolcat
+echo -e "${COLOR1}                • Reseller by : $reseller         ${NC}" | lolcat
+echo -e "${COLOR1}                • Client      : $Name             ${NC}" | lolcat
+echo -e "${COLOR1}                • Version     : ${version}        ${NC}" | lolcat
+echo -e "${COLOR1}                • Up-to-Date  : ${cekupdate}      ${NC}" | lolcat
+echo -e "${COLOR1}                • Expiry      : ${Expiry} days left    ${NC}" | lolcat
 echo -e "${COLOR1}               └─────────────────────────────┘  ${NC}" | lolcat
 if [[ $cekupdate == "${RED}NEED UPDATE${NC}" ]]; then
     echo -e "${COLOR1}      ─────────────────────────────────────────────────────${NC}" | lolcat
