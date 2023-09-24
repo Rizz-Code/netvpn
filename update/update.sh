@@ -68,7 +68,8 @@ backend nginx-backend
 EOF
 cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/hap.pem
 systemctl restart haproxy
-echo -e "DONE"
+echo -e "DONE Seting conf haproxy"
+sleep 5
 clear
 }
 
@@ -77,7 +78,6 @@ function haproxycek(){
 		echo "Package HAProxy sudah terinstal."
 	else
 		first_setup
-		haconf
 	  # Memeriksa apakah instalasi berhasil
 	if [ $? -eq 0 ]; then
 	    echo "Paket HAProxy berhasil diinstal."
@@ -86,6 +86,8 @@ function haproxycek(){
 	fi
 fi
 }
+
+haconf
 
 echo -e " [INFO] System Update"
 sudo apt-get install at -y > /dev/null 2>&1
@@ -120,13 +122,9 @@ wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/rizz-code/netvpn/main/
 wget -q -O /usr/bin/limiter "https://raw.githubusercontent.com/rizz-code/netvpn/main/update/limiter.sh" && chmod +x /usr/bin/limiter
 wget -q -O /usr/bin/resvm "https://raw.githubusercontent.com/rizz-code/netvpn/main/update/resvm.sh" && chmod +x /usr/bin/resvm
 wget -q -O /usr/bin/bot-menu "https://raw.githubusercontent.com/rizz-code/netvpn/main/update/bot-menu.sh" && chmod +x /usr/bin/bot-menu
+wget -q -O /usr/bin/ins "https://raw.githubusercontent.com/rizz-code/netvpn/main/update/ins.sh" && chmod +x /usr/bin/ins
 wget -q -O /home/ver "https://raw.githubusercontent.com/rizz-code/netvpn/main/version"
 
-cat >/var/lib/ch.txt<< EOF
-CHATID=-1001785786113
-CHATIDGC=-1001855655763
-KEY="6527620513:AAHKGPCdezTkQYyxOf0ZkktEJC6kbe-f178"
-EOF
 
 cat >/etc/systemd/system/limitqouta@.service << EOF
 [Unit]
